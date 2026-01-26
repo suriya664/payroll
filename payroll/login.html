@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login - HighTech Secure Payroll Portal</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="payroll login, employee portal, secure access" name="keywords">
+    <meta content="Securely access your employee dashboard and payroll history through the HighTech enterprise portal."
+        name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--bs-body-bg);
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 15px;
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-card h2 {
+            font-weight: 700;
+            color: var(--bs-primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+        }
+
+        .btn-login {
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body class="auth-bg">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <a href="index.html" class="text-decoration-none">
+                    <h1 class="text-primary fw-bold">High<span class="text-secondary">Tech</span></h1>
+                </a>
+            </div>
+            <h2>Secure Employee Login</h2>
+            <p class="text-center text-muted small mb-4">Access your terminal, payslips, and compliance documents.</p>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter your password">
+                </div>
+                <div class="mb-3 form-check d-flex justify-content-between">
+                    <div>
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label" for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="text-secondary">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-login">Login</button>
+                <div class="text-center mt-4">
+                    <p class="mb-0">Don't have an account? <a href="register.html"
+                            class="text-secondary fw-bold">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+
+</html>

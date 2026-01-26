@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HighTech Admin Dashboard - Payroll Overview</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="payroll dashboard, employee management portal" name="keywords">
+    <meta content="Secure access to your HighTech payroll management system, KPIs, and employee data overview."
+        name="description">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 250px;
+            --navbar-height: 80px;
+        }
+
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .navbar-main {
+            height: var(--navbar-height);
+            z-index: 1001;
+            position: sticky;
+            top: 0;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--navbar-height));
+            position: fixed;
+            left: 0;
+            top: var(--navbar-height);
+            background: var(--bs-primary);
+            color: white;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: none;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .bg-soft-primary {
+            background: rgba(0, 107, 255, 0.1);
+            color: var(--bs-primary);
+        }
+
+        .bg-soft-secondary {
+            background: rgba(255, 126, 0, 0.1);
+            color: var(--bs-secondary);
+        }
+
+        .bg-soft-success {
+            background: rgba(25, 135, 84, 0.1);
+            color: #198754;
+        }
+
+        .bg-soft-info {
+            background: rgba(13, 202, 240, 0.1);
+            color: #0dcaf0;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        .dashboard-header-controls {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] .dashboard-header-controls {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .sidebar {
+            top: 0;
+            height: 100vh;
+        }
+
+        .main-content {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-header-controls">
+        <a href="index.html" class="btn btn-sm btn-light rounded-pill px-3 me-3">
+            <i class="fa fa-arrow-left me-2"></i>Back to Home
+        </a>
+        <div id="theme-rtl-controls" class="d-flex align-items-center">
+            <button id="theme-toggle" class="btn btn-sm-square btn-light rounded-circle text-primary me-2"
+                title="Toggle Light/Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="rtl-toggle" class="btn btn-sm btn-light rounded-pill px-3 text-primary" title="Toggle RTL/LTR">
+                <span>RTL</span>
+            </button>
+        </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="mb-5 text-center">
+            <h2 class="text-white fw-bold">High<span class="text-secondary">Tech</span></h2>
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="#"><i class="fa fa-home"></i>Dashboard</a>
+            <a class="nav-link" href="#"><i class="fa fa-users"></i>Employees</a>
+            <a class="nav-link" href="#"><i class="fa fa-file-invoice-dollar"></i>Payroll</a>
+            <a class="nav-link" href="#"><i class="fa fa-calendar-alt"></i>Attendance</a>
+            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a>
+            <hr class="bg-white">
+            <a class="nav-link" href="index.html"><i class="fa fa-sign-out-alt"></i>Logout</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h3 class="fw-bold mb-0">Welcome Back, Admin!</h3>
+                <p class="text-muted small mb-0">Your payroll processing is 85% complete for the January cycle.</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-white bg-white shadow-sm me-3 rounded-pill position-relative">
+                    <i class="fa fa-bell"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 0.6rem;">3</span>
+                </button>
+                <div class="dropdown">
+                    <img src="img/admin.jpg" class="rounded-circle" width="45" height="45" alt="Admin">
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div class="stat-icon bg-soft-primary">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <i class="fa fa-info-circle text-muted" data-bs-toggle="tooltip"
+                            title="Total active employees in the current payroll cycle including contractors."></i>
+                    </div>
+                    <h6 class="text-muted">Total Employees</h6>
+                    <h2 class="fw-bold mb-0">1,240</h2>
+                    <small class="text-success"><i class="fa fa-arrow-up"></i> 5.2% since last month</small>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div class="stat-icon bg-soft-secondary">
+                            <i class="fa fa-dollar-sign"></i>
+                        </div>
+                        <i class="fa fa-info-circle text-muted" data-bs-toggle="tooltip"
+                            title="Total expenditure including gross pay, taxes, and secondary benefits."></i>
+                    </div>
+                    <h6 class="text-muted">Total Payroll</h6>
+                    <h2 class="fw-bold mb-0">$124,500</h2>
+                    <small class="text-danger"><i class="fa fa-arrow-down"></i> 1.5% since last month</small>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div class="stat-icon bg-soft-success">
+                            <i class="fa fa-check-circle"></i>
+                        </div>
+                        <i class="fa fa-info-circle text-muted" data-bs-toggle="tooltip"
+                            title="Compliance filings and payslip distributions completed this month."></i>
+                    </div>
+                    <h6 class="text-muted">Completed Tasks</h6>
+                    <h2 class="fw-bold mb-0">856</h2>
+                    <small class="text-success"><i class="fa fa-arrow-up"></i> 12% since last month</small>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between">
+                        <div class="stat-icon bg-soft-info">
+                            <i class="fa fa-clock"></i>
+                        </div>
+                        <i class="fa fa-info-circle text-muted" data-bs-toggle="tooltip"
+                            title="Employee requests for leave or expense reimbursement awaiting approval."></i>
+                    </div>
+                    <h6 class="text-muted">Pending Requests</h6>
+                    <h2 class="fw-bold mb-0">24</h2>
+                    <small class="text-secondary">Needs attention</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="table-container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold mb-0">Recent Payrolls</h4>
+                <button class="btn btn-primary rounded-pill btn-sm">View All</button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Designation</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 35px; height: 35px;">JD</div>
+                                    <span>John Doe</span>
+                                </div>
+                            </td>
+                            <td>Web Developer</td>
+                            <td>Jan 24, 2026</td>
+                            <td class="fw-bold">$3,500</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <td><button class="btn btn-sm btn-light border"><i class="fa fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 35px; height: 35px;">AS</div>
+                                    <span>Alice Smith</span>
+                                </div>
+                            </td>
+                            <td>UX Designer</td>
+                            <td>Jan 23, 2026</td>
+                            <td class="fw-bold">$4,200</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border"><i class="fa fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 35px; height: 35px;">BW</div>
+                                    <span>Bob Williams</span>
+                                </div>
+                            </td>
+                            <td>Project Manager</td>
+                            <td>Jan 22, 2026</td>
+                            <td class="fw-bold">$5,000</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <td><button class="btn btn-sm btn-light border"><i class="fa fa-eye"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+    <script src="js/theme.js"></script>
+</body>
+
+</html>
