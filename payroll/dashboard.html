@@ -142,50 +142,18 @@
             }
         }
 
-        .dashboard-header-controls {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            z-index: 1050;
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 8px 15px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        [data-theme="dark"] .dashboard-header-controls {
-            background: rgba(30, 41, 59, 0.8);
-        }
-
         .sidebar {
             top: 0;
             height: 100vh;
         }
 
         .main-content {
-            padding-top: 50px;
+            padding-top: 30px;
         }
     </style>
 </head>
 
 <body>
-    <div class="dashboard-header-controls">
-        <a href="index.html" class="btn btn-sm btn-light rounded-pill px-3 me-3">
-            <i class="fa fa-arrow-left me-2"></i>Back to Home
-        </a>
-        <div id="theme-rtl-controls" class="d-flex align-items-center">
-            <button id="theme-toggle" class="btn btn-sm-square btn-light rounded-circle text-primary me-2"
-                title="Toggle Light/Dark Mode">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button id="rtl-toggle" class="btn btn-sm btn-light rounded-pill px-3 text-primary" title="Toggle RTL/LTR">
-                <span>RTL</span>
-            </button>
-        </div>
-    </div>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="mb-5 text-center">
