@@ -75,6 +75,65 @@
             top: 20px;
             left: 20px;
         }
+
+        .social-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .social-divider::before,
+        .social-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .social-divider span {
+            padding: 0 12px;
+            font-size: 0.85rem;
+            color: #6c757d;
+            white-space: nowrap;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .btn-social {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid #dee2e6;
+            background: var(--card-bg, #fff);
+            color: var(--bs-body-color, #333);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-social:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .btn-social .fab.fa-google {
+            color: #EA4335;
+            font-size: 1.1rem;
+        }
+
+        .btn-social .fab.fa-facebook-f {
+            color: #1877F2;
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 
@@ -118,7 +177,23 @@
                             & Conditions</a></label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-register">Register</button>
-                <div class="text-center mt-4">
+
+                <!-- Social Signup Divider -->
+                <div class="social-divider">
+                    <span>or sign up with</span>
+                </div>
+
+                <!-- Social Signup Buttons -->
+                <div class="social-buttons">
+                    <a href="#" class="btn-social" id="btn-google-register">
+                        <i class="fab fa-google"></i> Google
+                    </a>
+                    <a href="#" class="btn-social" id="btn-facebook-register">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                </div>
+
+                <div class="text-center mt-3">
                     <p class="mb-0">Already have an account? <a href="login.html"
                             class="text-secondary fw-bold">Login</a></p>
                 </div>

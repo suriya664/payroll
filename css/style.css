@@ -578,3 +578,42 @@ body.auth-bg {
 }
 
 /*** Success Highlights End ***/
+
+/*** Counter/Stats Responsive Start ***/
+.counter {
+    align-items: center;
+}
+
+@media (max-width: 991.98px) {
+    .counter {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        padding: 15px 0;
+    }
+
+    .counter h1 {
+        font-size: 2rem;
+    }
+
+    .counter h5 {
+        width: 100%;
+        margin-top: 8px !important;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .counter {
+        padding: 12px 5px;
+    }
+
+    .counter h1 {
+        font-size: 1.6rem;
+    }
+
+    .counter h5 {
+        font-size: 0.85rem;
+    }
+}
+/*** Counter/Stats Responsive End ***/
