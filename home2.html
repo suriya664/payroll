@@ -38,6 +38,35 @@
             background-size: cover;
             padding: 150px 0;
         }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 80px 0;
+            }
+
+            .hero-header h1 {
+                font-size: 28px !important;
+            }
+
+            .hero-header p {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-header {
+                padding: 60px 15px;
+            }
+
+            .hero-header h1 {
+                font-size: 24px !important;
+            }
+
+            .hero-header .btn {
+                padding: 10px 20px !important;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 
@@ -95,10 +124,9 @@
             <p class="mb-5 text-white fs-5 animated fadeInDown">Scale your workforce across borders with a single source
                 of truth for all employee data, payments, and global compliance needs.</p>
             <div class="d-flex justify-content-center">
-                <a href="register.html" class="btn btn-primary rounded-pill py-3 px-5 me-3 animated fadeInLeft">Get
-                    Started Now</a>
-                <a href="about.html" class="btn btn-secondary rounded-pill py-3 px-5 animated fadeInRight">How it
-                    Works</a>
+                <a href="register.html" class="btn btn-primary rounded-pill py-3 px-5 me-3 animated fadeInLeft">
+                    Start Now</a>
+
             </div>
         </div>
     </div>
