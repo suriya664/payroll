@@ -236,24 +236,6 @@ body {
 
 /*** Navbar Mobile Overlap Fix Start ***/
 
-.container-fluid.bg-primary {
-    position: relative;
-    z-index: 1000;
-}
-
-@media (max-width: 991.98px) {
-    .navbar-collapse {
-        background-color: var(--bs-primary) !important;
-        padding: 10px 15px;
-        border-radius: 0 0 10px 10px;
-        position: relative;
-        z-index: 1000;
-    }
-}
-
-/*** Navbar Mobile Overlap Fix End ***/
-
-
 /*** Carousel Start ***/
 
 .carousel-item {
@@ -774,3 +756,17 @@ body.auth-bg {
 }
 
 /*** Counter/Stats Responsive End ***/
+
+/*** Navbar Responsive Fix for 1024px ***/
+
+@media (min-width: 1024px) {
+    .navbar .d-none.d-xl-flex {
+        display: flex !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar .d-none.d-xl-flex {
+        display: flex !important;
+    }
+}
